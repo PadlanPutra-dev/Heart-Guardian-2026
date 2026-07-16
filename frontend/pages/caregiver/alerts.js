@@ -6,8 +6,8 @@ export function createCaregiverAlertsPage(authState) {
   const displayName = getUserName(authState, 'Emily');
 
   return `
-    <div class="min-h-screen bg-surface pb-24 font-body-md text-on-surface">
-      <header class="sticky top-0 z-40 flex h-16 w-full items-center justify-between border-b border-outline-variant bg-surface px-margin-screen">
+    <div class="min-h-screen bg-[linear-gradient(180deg,#f8fbf8_0%,#f4f7fa_100%)] pb-24 font-body-md text-on-background">
+      <header class="sticky top-0 z-40 flex h-16 w-full items-center justify-between border-b border-outline-variant/40 bg-white/85 px-margin-screen backdrop-blur-md">
         <div class="flex items-center gap-3">
           <span class="material-symbols-outlined text-[28px] text-primary" style="font-variation-settings: 'FILL' 1;">monitor_heart</span>
           <div>
@@ -21,7 +21,7 @@ export function createCaregiverAlertsPage(authState) {
         </button>
       </header>
 
-      <main class="mx-auto max-w-2xl space-y-section-gap px-margin-screen pt-stack-gap">
+      <main class="mx-auto flex w-full max-w-6xl flex-col gap-stack-gap px-margin-screen py-6 lg:px-8">
         <section>
           <p class="font-body-lg text-on-surface-variant">Stay informed about your loved one&apos;s heart condition and respond quickly to vital changes.</p>
         </section>
@@ -180,24 +180,24 @@ export function createCaregiverAlertsPage(authState) {
         </section>
       </main>
 
-      <nav class="fixed bottom-0 z-50 flex h-20 w-full items-center justify-around rounded-t-xl border-t border-outline-variant bg-surface px-2 pb-safe shadow-[0px_-4px_20px_rgba(0,0,0,0.04)]">
-        <a class="flex flex-col items-center justify-center px-4 py-1 text-on-surface-variant transition-all duration-200 active:scale-90 hover:bg-surface-container-low" href="#/dashboard">
+      <nav class="fixed bottom-0 z-50 flex h-20 w-full items-center justify-around rounded-t-xl border-t border-outline-variant bg-white/95 px-2 pb-safe shadow-[0px_-4px_20px_rgba(0,0,0,0.04)] backdrop-blur">
+        <a class="flex min-w-0 flex-1 flex-col items-center justify-center rounded-[16px] px-2 py-2 transition-all duration-200 active:scale-90 hover:bg-surface-container-low" data-bottom-nav-link="caregiver" href="#/dashboard">
           <span class="material-symbols-outlined">home</span>
           <span class="font-label-sm text-label-sm">Home</span>
         </a>
-        <a class="flex flex-col items-center justify-center px-4 py-1 text-on-surface-variant transition-all duration-200 active:scale-90 hover:bg-surface-container-low" href="#/caregiver-monitoring">
-          <span class="material-symbols-outlined">insights</span>
+        <a class="flex min-w-0 flex-1 flex-col items-center justify-center rounded-[16px] px-2 py-2 transition-all duration-200 active:scale-90 hover:bg-surface-container-low" data-bottom-nav-link="caregiver" href="#/caregiver-monitoring">
+          <span class="material-symbols-outlined">monitor_heart</span>
           <span class="font-label-sm text-label-sm">Monitoring</span>
         </a>
-        <a class="flex flex-col items-center justify-center rounded-full bg-secondary-container px-4 py-1 text-on-secondary-container duration-200 active:scale-90" href="#/caregiver-alerts">
+        <a class="flex min-w-0 flex-1 flex-col items-center justify-center rounded-[16px] px-2 py-2 transition-all duration-200 active:scale-90 hover:bg-surface-container-low" data-bottom-nav-link="caregiver" href="#/caregiver-alerts">
           <span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">warning</span>
           <span class="font-label-sm text-label-sm">Alerts</span>
         </a>
-        <a class="flex flex-col items-center justify-center px-4 py-1 text-on-surface-variant transition-all duration-200 active:scale-90 hover:bg-surface-container-low" href="#">
+        <a class="flex min-w-0 flex-1 flex-col items-center justify-center rounded-[16px] px-2 py-2 transition-all duration-200 active:scale-90 hover:bg-surface-container-low" data-bottom-nav-link="caregiver" href="#/caregiver-history">
           <span class="material-symbols-outlined">history</span>
           <span class="font-label-sm text-label-sm">History</span>
         </a>
-        <a class="flex flex-col items-center justify-center px-4 py-1 text-on-surface-variant transition-all duration-200 active:scale-90 hover:bg-surface-container-low" href="#/profile">
+        <a class="flex min-w-0 flex-1 flex-col items-center justify-center rounded-[16px] px-2 py-2 transition-all duration-200 active:scale-90 hover:bg-surface-container-low" data-bottom-nav-link="caregiver" href="#/caregiver-profile">
           <span class="material-symbols-outlined">person</span>
           <span class="font-label-sm text-label-sm">Profile</span>
         </a>

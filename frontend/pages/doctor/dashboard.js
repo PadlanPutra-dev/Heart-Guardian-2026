@@ -15,7 +15,7 @@ export function createDoctorDashboardPage(authState) {
 
   return `
     <div class="min-h-screen bg-surface text-on-surface pb-24">
-      <header class="fixed top-0 z-50 flex h-16 w-full items-center justify-between border-b border-outline-variant bg-surface px-margin-screen max-w-md left-0 right-0 mx-auto">
+      <header class="fixed top-0 z-50 flex h-16 w-full items-center justify-between border-b border-outline-variant bg-surface px-margin-screen max-w-6xl left-0 right-0 mx-auto">
         <div class="flex items-center gap-3">
           <div class="h-10 w-10 overflow-hidden rounded-full border-2 border-primary-container">
             <img class="h-full w-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDCwMjl-LjDJ1bWoPQPra01xmHsL7rWluZsDnXHiR8gblRXOiLHUn4ZeTqWBbTh14cPSCZIYGGIQGxjsBKW3VN_n8GV7fEhcACpdN85V8SiPDnE_VTHw8cwbBHkeYJzyPnGgE7IIpYZXxcsAW5CFFXdKBrtf-VJrX68-Xk7B1eLNEhWnx5G06Uqv-56i9JYFj_GQZtWxHAL1CkE_VMSVsY7vZQwyJ9wRoUgX1r0jdsd64_4FHXKSmJBhg" alt="Doctor avatar" />
@@ -31,13 +31,13 @@ export function createDoctorDashboardPage(authState) {
         </div>
       </header>
 
-      <main class="mx-auto max-w-md space-y-section-gap px-margin-screen pt-20">
+      <main class="dashboard-shell mx-auto w-full space-y-section-gap px-margin-screen pt-20 lg:px-8">
         <section class="space-y-1">
           <h1 class="font-headline-lg text-headline-lg text-on-surface">${greeting}, ${doctorName}</h1>
           <p class="font-body-md text-body-md text-on-surface-variant">Cardiologist • Heart Guardian Doctor</p>
         </section>
 
-        <section class="grid grid-cols-2 gap-stack-gap">
+        <section class="grid grid-cols-2 gap-stack-gap sm:grid-cols-2 lg:grid-cols-4">
           <div class="medical-card flex min-h-[100px] flex-col justify-between p-padding-card">
             <div class="mb-4 flex items-center justify-between">
               <span class="font-label-sm text-label-sm text-on-surface-variant">Total Patients</span>
@@ -140,7 +140,7 @@ export function createDoctorDashboardPage(authState) {
 
         <section class="space-y-stack-gap">
           <h2 class="font-headline-md text-headline-md">Quick Actions</h2>
-          <div class="grid grid-cols-2 gap-3">
+          <div class="grid grid-cols-2 gap-3 md:grid-cols-4">
             <a href="#/doctor-patients" class="flex h-14 items-center justify-center gap-2 rounded-[20px] bg-primary font-label-lg text-on-primary shadow-sm transition-all hover:opacity-90 active:scale-95">
               <span class="material-symbols-outlined text-[20px]">group</span>
               Patients
@@ -153,10 +153,10 @@ export function createDoctorDashboardPage(authState) {
               <span class="material-symbols-outlined text-[20px]">emergency</span>
               Alerts
             </a>
-            <button class="flex h-14 items-center justify-center gap-2 rounded-[20px] bg-surface-container-high font-label-lg text-on-surface transition-all hover:bg-surface-container-highest active:scale-95">
+            <a href="#/doctor-profile" class="flex h-14 items-center justify-center gap-2 rounded-[20px] bg-surface-container-high font-label-lg text-on-surface transition-all hover:bg-surface-container-highest active:scale-95">
               <span class="material-symbols-outlined text-[20px]">description</span>
-              Reports
-            </button>
+              Profile
+            </a>
           </div>
         </section>
 
@@ -216,26 +216,26 @@ export function createDoctorDashboardPage(authState) {
         </section>
       </main>
 
-      <nav class="fixed bottom-0 left-0 right-0 z-50 mx-auto flex h-20 w-full max-w-md items-center justify-around rounded-t-[20px] border-t border-outline-variant bg-surface px-4 pb-2 shadow-[0px_-4px_20px_rgba(0,0,0,0.04)]">
-        <a class="flex flex-col items-center justify-center rounded-xl p-2 font-semibold text-primary transition-all hover:bg-secondary-container/50" href="#/dashboard">
-          <span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">home</span>
-          <span class="font-label-sm text-label-sm">Home</span>
+      <nav class="fixed bottom-0 left-0 right-0 z-50 mx-auto grid h-20 w-full max-w-6xl grid-cols-5 items-center rounded-t-[24px] border-t border-outline-variant/60 bg-white/95 px-2 pb-2 shadow-[0px_-8px_30px_rgba(15,23,42,0.08)] backdrop-blur">
+        <a class="flex min-w-0 flex-1 flex-col items-center justify-center rounded-[16px] p-2 text-center text-on-surface-variant transition-all duration-200 hover:bg-secondary-container/50 active:scale-95" href="#/dashboard" data-bottom-nav-link="doctor">
+          <span class="material-symbols-outlined">home</span>
+          <span class="whitespace-nowrap font-label-sm text-label-sm">Home</span>
         </a>
-        <a class="flex flex-col items-center justify-center rounded-xl p-2 text-secondary transition-all hover:bg-secondary-container/50" href="#/doctor-patients">
+        <a class="flex min-w-0 flex-1 flex-col items-center justify-center rounded-[16px] p-2 text-center text-on-surface-variant transition-all duration-200 hover:bg-secondary-container/50 active:scale-95" href="#/doctor-patients" data-bottom-nav-link="doctor">
           <span class="material-symbols-outlined">group</span>
-          <span class="font-label-sm text-label-sm">Patients</span>
+          <span class="whitespace-nowrap font-label-sm text-label-sm">Patients</span>
         </a>
-        <a class="flex flex-col items-center justify-center rounded-xl p-2 text-secondary transition-all hover:bg-secondary-container/50" href="#/dashboard">
+        <a class="flex min-w-0 flex-1 flex-col items-center justify-center rounded-[16px] p-2 text-center text-on-surface-variant transition-all duration-200 hover:bg-secondary-container/50 active:scale-95" href="#/doctor-calendar" data-bottom-nav-link="doctor">
           <span class="material-symbols-outlined">calendar_today</span>
-          <span class="font-label-sm text-label-sm">Calendar</span>
+          <span class="whitespace-nowrap font-label-sm text-label-sm">Appointments</span>
         </a>
-        <a class="flex flex-col items-center justify-center rounded-xl p-2 text-secondary transition-all hover:bg-secondary-container/50" href="#/dashboard">
+        <a class="flex min-w-0 flex-1 flex-col items-center justify-center rounded-[16px] p-2 text-center text-on-surface-variant transition-all duration-200 hover:bg-secondary-container/50 active:scale-95" href="#/doctor-alerts" data-bottom-nav-link="doctor">
           <span class="material-symbols-outlined">notification_important</span>
-          <span class="font-label-sm text-label-sm">Alerts</span>
+          <span class="whitespace-nowrap font-label-sm text-label-sm">Alerts</span>
         </a>
-        <a class="flex flex-col items-center justify-center rounded-xl p-2 text-secondary transition-all hover:bg-secondary-container/50" href="#/dashboard">
+        <a class="flex min-w-0 flex-1 flex-col items-center justify-center rounded-[16px] p-2 text-center text-on-surface-variant transition-all duration-200 hover:bg-secondary-container/50 active:scale-95" href="#/doctor-profile" data-bottom-nav-link="doctor">
           <span class="material-symbols-outlined">person</span>
-          <span class="font-label-sm text-label-sm">Profile</span>
+          <span class="whitespace-nowrap font-label-sm text-label-sm">Profile</span>
         </a>
       </nav>
     </div>

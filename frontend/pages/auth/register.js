@@ -26,7 +26,7 @@ export function createRegisterPage(selectedRole = 'patient', stage = 'role-selec
           </div>
         </header>
 
-        <main class="mx-auto max-w-md px-margin-screen pb-32 sm:px-8">
+        <main class="dashboard-shell mx-auto w-full px-margin-screen pb-32 sm:px-8">
           <div class="mt-stack-gap">
             <div class="h-1.5 w-full overflow-hidden rounded-full bg-surface-container">
               <div class="h-full bg-primary transition-all duration-500" id="registration-progress" style="width: 20%;"></div>
@@ -160,7 +160,7 @@ export function createRegisterPage(selectedRole = 'patient', stage = 'role-selec
           </div>
         </header>
 
-        <main class="mx-auto max-w-md px-margin-screen pb-12 sm:px-8">
+        <main class="dashboard-shell mx-auto w-full px-margin-screen pb-12 sm:px-8">
           <div class="mt-8 mb-section-gap">
             <div class="mb-2 flex items-center justify-between">
               <span class="font-label-lg text-label-lg text-primary">Registration Progress</span>
@@ -293,7 +293,7 @@ export function createRegisterPage(selectedRole = 'patient', stage = 'role-selec
           </div>
         </header>
 
-        <main class="mx-auto max-w-xl px-margin-screen py-10 sm:px-8 lg:px-10">
+        <main class="dashboard-shell mx-auto w-full px-margin-screen py-10 sm:px-8 lg:px-10">
           <div class="mb-section-gap">
             <div class="mb-2 flex items-center justify-between">
               <span class="font-label-lg text-label-lg text-primary">Step 1 of 5</span>
@@ -454,7 +454,7 @@ export function createRegisterPage(selectedRole = 'patient', stage = 'role-selec
 
   return `
     <section class="flex min-h-screen items-center justify-center bg-background px-6 py-8 text-on-background sm:px-8 lg:px-10">
-      <main class="relative w-full max-w-[480px] overflow-hidden rounded-[20px] bg-surface-container-lowest p-8 shadow-[0_4px_20px_rgba(0,0,0,0.04)] md:p-12">
+      <main class="auth-card relative w-full overflow-hidden rounded-[20px] bg-surface-container-lowest p-6 shadow-[0_4px_20px_rgba(0,0,0,0.04)] sm:p-8 md:p-12">
         <div class="pointer-events-none absolute right-0 top-0 -mr-16 -mt-16 h-48 w-48 rounded-full bg-primary-fixed opacity-10 blur-3xl"></div>
 
         <div class="relative z-10 mb-section-gap flex flex-col items-center">

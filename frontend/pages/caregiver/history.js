@@ -6,8 +6,8 @@ export function createCaregiverHistoryPage(authState) {
   const displayName = getUserName(authState, 'Emily');
 
   return `
-    <div class="min-h-screen bg-background pb-24 text-on-surface">
-      <header class="sticky top-0 z-50 flex h-16 w-full items-center justify-between border-b border-outline-variant bg-surface px-margin-screen">
+    <div class="min-h-screen bg-[linear-gradient(180deg,#f8fbf8_0%,#f4f7fa_100%)] pb-24 text-on-background">
+      <header class="sticky top-0 z-50 flex h-16 w-full items-center justify-between border-b border-outline-variant/40 bg-white/85 px-margin-screen backdrop-blur-md">
         <div class="flex items-center gap-3">
           <div class="flex h-10 w-10 items-center justify-center overflow-hidden rounded-full border border-outline-variant">
             <span class="material-symbols-outlined text-[22px] text-primary" style="font-variation-settings: 'FILL' 1;">monitor_heart</span>
@@ -22,7 +22,7 @@ export function createCaregiverHistoryPage(authState) {
         </div>
       </header>
 
-      <main class="mx-auto max-w-3xl px-margin-screen pt-6">
+      <main class="mx-auto flex w-full max-w-6xl flex-col px-margin-screen py-6 lg:px-8">
         <section class="mb-section-gap">
           <h2 class="font-headline-lg text-headline-lg text-on-surface">History</h2>
           <p class="font-body-md text-body-md text-on-surface-variant">Track your loved one&apos;s health journey.</p>
@@ -209,23 +209,27 @@ export function createCaregiverHistoryPage(authState) {
         </section>
       </main>
 
-      <nav class="fixed bottom-0 z-50 flex h-20 w-full items-center justify-around border-t border-outline-variant bg-surface px-4 py-2">
-        <button class="flex flex-col items-center justify-center px-3 py-1 text-on-surface-variant transition-transform duration-150 active:scale-90 hover:bg-surface-container-low">
-          <span class="material-symbols-outlined">calendar_today</span>
-          <span class="font-label-sm text-label-sm">Today</span>
-        </button>
-        <button class="flex flex-col items-center justify-center rounded-xl bg-secondary-container/10 px-3 py-1 text-primary transition-transform duration-150 active:scale-90">
+      <nav class="fixed bottom-0 z-50 flex h-20 w-full items-center justify-around border-t border-outline-variant bg-white/95 px-2 py-2 backdrop-blur">
+        <a class="flex min-w-0 flex-1 flex-col items-center justify-center rounded-[16px] px-2 py-2 transition-transform duration-150 active:scale-90 hover:bg-surface-container-low" data-bottom-nav-link="caregiver" href="#/dashboard">
+          <span class="material-symbols-outlined">home</span>
+          <span class="font-label-sm text-label-sm">Home</span>
+        </a>
+        <a class="flex min-w-0 flex-1 flex-col items-center justify-center rounded-[16px] px-2 py-2 transition-transform duration-150 active:scale-90 hover:bg-surface-container-low" data-bottom-nav-link="caregiver" href="#/caregiver-monitoring">
+          <span class="material-symbols-outlined">monitor_heart</span>
+          <span class="font-label-sm text-label-sm">Monitoring</span>
+        </a>
+        <a class="flex min-w-0 flex-1 flex-col items-center justify-center rounded-[16px] px-2 py-2 transition-transform duration-150 active:scale-90 hover:bg-surface-container-low" data-bottom-nav-link="caregiver" href="#/caregiver-alerts">
+          <span class="material-symbols-outlined">warning</span>
+          <span class="font-label-sm text-label-sm">Alerts</span>
+        </a>
+        <a class="flex min-w-0 flex-1 flex-col items-center justify-center rounded-[16px] px-2 py-2 transition-transform duration-150 active:scale-90 hover:bg-surface-container-low" data-bottom-nav-link="caregiver" href="#/caregiver-history">
           <span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">history</span>
           <span class="font-label-sm text-label-sm">History</span>
-        </button>
-        <button class="flex flex-col items-center justify-center px-3 py-1 text-on-surface-variant transition-transform duration-150 active:scale-90 hover:bg-surface-container-low">
-          <span class="material-symbols-outlined">analytics</span>
-          <span class="font-label-sm text-label-sm">Insights</span>
-        </button>
-        <button class="flex flex-col items-center justify-center px-3 py-1 text-on-surface-variant transition-transform duration-150 active:scale-90 hover:bg-surface-container-low">
+        </a>
+        <a class="flex min-w-0 flex-1 flex-col items-center justify-center rounded-[16px] px-2 py-2 transition-transform duration-150 active:scale-90 hover:bg-surface-container-low" data-bottom-nav-link="caregiver" href="#/caregiver-profile">
           <span class="material-symbols-outlined">person</span>
           <span class="font-label-sm text-label-sm">Profile</span>
-        </button>
+        </a>
       </nav>
     </div>
   `;

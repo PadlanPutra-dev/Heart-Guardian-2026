@@ -21,7 +21,7 @@ export function createDoctorPatientsPage(authState) {
         </div>
       </header>
 
-      <main class="space-y-section-gap px-margin-screen pt-6">
+      <main class="dashboard-shell mx-auto w-full space-y-section-gap px-margin-screen pt-6 lg:px-8">
         <section class="space-y-2">
           <div class="flex items-end justify-between">
             <div>
@@ -191,28 +191,28 @@ export function createDoctorPatientsPage(authState) {
         </section>
       </main>
 
-      <nav class="fixed bottom-0 z-50 h-20 w-full border-t border-outline-variant bg-surface">
-        <div class="flex h-full w-full items-center justify-around px-2 pb-safe">
-          <button class="flex flex-col items-center justify-center px-4 py-1 text-on-surface-variant transition-colors hover:bg-surface-container-high active:scale-95">
+      <nav class="fixed bottom-0 z-50 h-20 w-full border-t border-outline-variant/60 bg-white/95 shadow-[0px_-8px_30px_rgba(15,23,42,0.08)] backdrop-blur">
+        <div class="grid h-full w-full grid-cols-5 items-center px-2 pb-safe">
+          <a class="flex min-w-0 flex-1 flex-col items-center justify-center rounded-[16px] px-2 py-1 text-center text-on-surface-variant transition-all duration-200 hover:bg-secondary-container/50 active:scale-95" href="#/dashboard" data-bottom-nav-link="doctor">
             <span class="material-symbols-outlined">home</span>
-            <span class="font-label-sm text-label-sm">Home</span>
-          </button>
-          <button class="flex flex-col items-center justify-center rounded-xl bg-secondary-container/30 px-4 py-1 text-primary active:scale-95">
-            <span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">group</span>
-            <span class="font-label-sm text-label-sm">Patients</span>
-          </button>
-          <button class="flex flex-col items-center justify-center px-4 py-1 text-on-surface-variant transition-colors hover:bg-surface-container-high active:scale-95">
+            <span class="whitespace-nowrap font-label-sm text-label-sm">Home</span>
+          </a>
+          <a class="flex min-w-0 flex-1 flex-col items-center justify-center rounded-[16px] px-2 py-1 text-center text-on-surface-variant transition-all duration-200 hover:bg-secondary-container/50 active:scale-95" href="#/doctor-patients" data-bottom-nav-link="doctor">
+            <span class="material-symbols-outlined">group</span>
+            <span class="whitespace-nowrap font-label-sm text-label-sm">Patients</span>
+          </a>
+          <a class="flex min-w-0 flex-1 flex-col items-center justify-center rounded-[16px] px-2 py-1 text-center text-on-surface-variant transition-all duration-200 hover:bg-secondary-container/50 active:scale-95" href="#/doctor-calendar" data-bottom-nav-link="doctor">
             <span class="material-symbols-outlined">calendar_today</span>
-            <span class="font-label-sm text-label-sm">Calendar</span>
-          </button>
-          <button class="flex flex-col items-center justify-center px-4 py-1 text-on-surface-variant transition-colors hover:bg-surface-container-high active:scale-95">
+            <span class="whitespace-nowrap font-label-sm text-label-sm">Appointments</span>
+          </a>
+          <a class="flex min-w-0 flex-1 flex-col items-center justify-center rounded-[16px] px-2 py-1 text-center text-on-surface-variant transition-all duration-200 hover:bg-secondary-container/50 active:scale-95" href="#/doctor-alerts" data-bottom-nav-link="doctor">
             <span class="material-symbols-outlined">notifications_active</span>
-            <span class="font-label-sm text-label-sm">Alerts</span>
-          </button>
-          <button class="flex flex-col items-center justify-center px-4 py-1 text-on-surface-variant transition-colors hover:bg-surface-container-high active:scale-95">
+            <span class="whitespace-nowrap font-label-sm text-label-sm">Alerts</span>
+          </a>
+          <a class="flex min-w-0 flex-1 flex-col items-center justify-center rounded-[16px] px-2 py-1 text-center text-on-surface-variant transition-all duration-200 hover:bg-secondary-container/50 active:scale-95" href="#/doctor-profile" data-bottom-nav-link="doctor">
             <span class="material-symbols-outlined">person</span>
-            <span class="font-label-sm text-label-sm">Profile</span>
-          </button>
+            <span class="whitespace-nowrap font-label-sm text-label-sm">Profile</span>
+          </a>
         </div>
       </nav>
     </div>

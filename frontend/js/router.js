@@ -42,12 +42,87 @@ window.togglePassword = function togglePassword(id, targetId) {
   icon.textContent = 'visibility';
 };
 
+function syncDoctorBottomNav(hash = window.location.hash || '#/dashboard') {
+  const currentHash = hash || '#/dashboard';
+  const activeHref = {
+    '#/dashboard': '#/dashboard',
+    '#/doctor-patients': '#/doctor-patients',
+    '#/doctor-calendar': '#/doctor-calendar',
+    '#/doctor-alerts': '#/doctor-alerts',
+    '#/doctor-profile': '#/doctor-profile'
+  }[currentHash] || '#/dashboard';
+
+  app?.querySelectorAll('a[data-bottom-nav-link="doctor"]').forEach((link) => {
+    const isActive = link.getAttribute('href') === activeHref;
+    link.classList.remove('bg-secondary-container', 'text-on-secondary-container', 'shadow-sm', 'font-semibold', 'text-primary', 'text-secondary');
+
+    if (isActive) {
+      link.classList.add('bg-secondary-container', 'text-on-secondary-container', 'shadow-sm', 'font-semibold');
+      link.setAttribute('aria-current', 'page');
+    } else {
+      link.classList.add('text-on-surface-variant');
+      link.removeAttribute('aria-current');
+    }
+  });
+}
+
+function syncCaregiverBottomNav(hash = window.location.hash || '#/dashboard') {
+  const currentHash = hash || '#/dashboard';
+  const activeHref = {
+    '#/dashboard': '#/dashboard',
+    '#/caregiver-monitoring': '#/caregiver-monitoring',
+    '#/caregiver-alerts': '#/caregiver-alerts',
+    '#/caregiver-history': '#/caregiver-history',
+    '#/caregiver-profile': '#/caregiver-profile'
+  }[currentHash] || '#/dashboard';
+
+  app?.querySelectorAll('a[data-bottom-nav-link="caregiver"]').forEach((link) => {
+    const isActive = link.getAttribute('href') === activeHref;
+    link.classList.remove('bg-primary/10', 'text-primary', 'shadow-sm', 'font-semibold', 'text-on-secondary-container', 'bg-secondary-container');
+
+    if (isActive) {
+      link.classList.add('bg-primary/10', 'text-primary', 'shadow-sm', 'font-semibold');
+      link.setAttribute('aria-current', 'page');
+    } else {
+      link.classList.add('text-on-surface-variant');
+      link.removeAttribute('aria-current');
+    }
+  });
+}
+
+function syncPatientBottomNav(hash = window.location.hash || '#/dashboard') {
+  const currentHash = hash || '#/dashboard';
+  const activeHref = {
+    '#/dashboard': '#/dashboard',
+    '#/monitoring': '#/monitoring',
+    '#/ai-insights': '#/ai-insights',
+    '#/history': '#/history',
+    '#/profile': '#/profile'
+  }[currentHash] || '#/dashboard';
+
+  app?.querySelectorAll('a[data-bottom-nav-link="patient"]').forEach((link) => {
+    const isActive = link.getAttribute('href') === activeHref;
+    link.classList.remove('bg-primary/10', 'text-primary', 'shadow-sm', 'font-semibold', 'text-on-secondary-container', 'bg-secondary-container');
+
+    if (isActive) {
+      link.classList.add('bg-primary/10', 'text-primary', 'shadow-sm', 'font-semibold');
+      link.setAttribute('aria-current', 'page');
+    } else {
+      link.classList.add('text-on-surface-variant');
+      link.removeAttribute('aria-current');
+    }
+  });
+}
+
 function renderLayout(content) {
   app.innerHTML = `
-    <div class="min-h-screen bg-background text-on-background">
+    <div class="min-h-screen bg-[linear-gradient(180deg,#f8fbf8_0%,#f4f7fa_100%)] text-on-background">
       <main>${content}</main>
     </div>
   `;
+  syncDoctorBottomNav(window.location.hash || '#/dashboard');
+  syncCaregiverBottomNav(window.location.hash || '#/dashboard');
+  syncPatientBottomNav(window.location.hash || '#/dashboard');
 }
 
 async function renderPage() {
@@ -108,13 +183,16 @@ async function renderPage() {
   if (hash === '#/dashboard') {
     if (token) {
       try {
-        const profile = await fetchProfile(token);
-        setAuthState({ token, user: profile.data.user });
-        renderLayout(createDashboardPage(profile.data));
+        const existingState = getAuthState() || {};
+        const profile = await fetchProfile(token).catch(() => null);
+        const resolvedUser = profile?.data?.user || existingState.user || { role: 'patient' };
+        const nextState = { token, user: { ...existingState.user, ...resolvedUser } };
+        setAuthState(nextState);
+        renderLayout(createDashboardPage(nextState));
       } catch (error) {
         console.error('Profile fetch failed:', error);
-        clearAuthState();
-        window.location.hash = '#/login';
+        const fallbackState = getAuthState() || { user: { role: 'patient' } };
+        renderLayout(createDashboardPage({ token, user: fallbackState.user }));
       }
     } else {
       window.location.hash = '#/login';
@@ -385,12 +463,16 @@ function attachAuthHandlers(mode) {
   }
 
   const form = document.querySelector(`[data-${mode === 'login' ? 'login' : 'register'}-form]`);
+  if (!form) {
+    return;
+  }
 
-  form?.addEventListener('submit', async (event) => {
+  form.addEventListener('submit', async (event) => {
     event.preventDefault();
     const formData = new FormData(event.currentTarget);
     const email = formData.get('email');
     const password = formData.get('password');
+    const role = formData.get('role') || sessionStorage.getItem('heart-guardian-selected-role') || 'patient';
 
     if (!email || !password) {
       alert('Please enter both email and password.');
@@ -404,7 +486,6 @@ function attachAuthHandlers(mode) {
         response = await loginUser({ email, password });
       } else {
         const fullName = formData.get('fullName');
-        const role = formData.get('role') || sessionStorage.getItem('heart-guardian-selected-role') || 'patient';
         const confirmPassword = formData.get('confirmPassword');
         const termsAccepted = formData.get('terms') || formData.get('privacy');
 

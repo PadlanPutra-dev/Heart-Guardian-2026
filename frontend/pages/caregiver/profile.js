@@ -6,8 +6,8 @@ export function createCaregiverProfilePage(authState) {
   const displayName = getUserName(authState, 'Emily');
 
   return `
-    <div class="min-h-screen bg-background pb-32 font-body-md text-on-background selection:bg-primary-fixed-dim selection:text-on-primary-fixed">
-      <header class="glass-header sticky top-0 z-50 flex h-16 w-full items-center justify-between border-b border-surface-variant px-margin-screen">
+    <div class="min-h-screen bg-[linear-gradient(180deg,#f8fbf8_0%,#f4f7fa_100%)] pb-32 font-body-md text-on-background selection:bg-primary-fixed-dim selection:text-on-primary-fixed">
+      <header class="sticky top-0 z-50 flex h-16 w-full items-center justify-between border-b border-outline-variant/40 bg-white/85 px-margin-screen backdrop-blur-md">
         <div class="flex items-center gap-3">
           <button class="rounded-full p-2 text-primary transition-colors duration-200 hover:bg-surface-container-low active:scale-95">
             <span class="material-symbols-outlined">arrow_back</span>
@@ -21,7 +21,7 @@ export function createCaregiverProfilePage(authState) {
         </div>
       </header>
 
-      <main class="mx-auto max-w-2xl space-y-section-gap px-margin-screen pt-6">
+      <main class="mx-auto flex w-full max-w-6xl flex-col gap-stack-gap px-margin-screen py-6 lg:px-8">
         <section class="flex items-start justify-between">
           <div>
             <h2 class="font-headline-lg text-headline-lg text-on-surface">Caregiver Profile</h2>
@@ -234,7 +234,11 @@ export function createCaregiverProfilePage(authState) {
         </section>
 
         <section class="pt-4">
-          <button class="flex w-full items-center justify-center gap-2 rounded-card border border-error/20 bg-error-container/10 p-4 font-headline-md text-error transition-transform duration-200 active:scale-95">
+          <button
+            type="button"
+            class="flex w-full items-center justify-center gap-2 rounded-card border border-error/20 bg-error-container/10 p-4 font-headline-md text-error transition-transform duration-200 active:scale-95"
+            data-logout="caregiver"
+          >
             <span class="material-symbols-outlined">logout</span>
             Logout
           </button>
@@ -242,27 +246,27 @@ export function createCaregiverProfilePage(authState) {
         </section>
       </main>
 
-      <nav class="fixed bottom-0 z-50 flex h-16 w-full items-center justify-around border-t border-surface-variant bg-surface-container-lowest px-4 pb-safe">
-        <a class="flex flex-col items-center justify-center text-on-surface-variant transition-colors duration-200 active:scale-90 hover:text-primary" href="#/dashboard">
+      <nav class="fixed bottom-0 z-50 flex h-16 w-full items-center justify-around border-t border-surface-variant bg-white/95 px-2 pb-safe backdrop-blur">
+        <a class="flex min-w-0 flex-1 flex-col items-center justify-center rounded-[16px] px-2 py-2 transition-colors duration-200 active:scale-90 hover:bg-surface-container-low" data-bottom-nav-link="caregiver" href="#/dashboard">
           <span class="material-symbols-outlined">home</span>
           <span class="font-label-sm text-label-sm">Home</span>
         </a>
-        <a class="flex flex-col items-center justify-center text-on-surface-variant transition-colors duration-200 active:scale-90 hover:text-primary" href="#/caregiver-monitoring">
+        <a class="flex min-w-0 flex-1 flex-col items-center justify-center rounded-[16px] px-2 py-2 transition-colors duration-200 active:scale-90 hover:bg-surface-container-low" data-bottom-nav-link="caregiver" href="#/caregiver-monitoring">
           <span class="material-symbols-outlined">monitor_heart</span>
           <span class="font-label-sm text-label-sm">Monitoring</span>
         </a>
-        <a class="flex flex-col items-center justify-center text-on-surface-variant transition-colors duration-200 active:scale-90 hover:text-primary" href="#/caregiver-alerts">
+        <a class="flex min-w-0 flex-1 flex-col items-center justify-center rounded-[16px] px-2 py-2 transition-colors duration-200 active:scale-90 hover:bg-surface-container-low" data-bottom-nav-link="caregiver" href="#/caregiver-alerts">
           <div class="relative">
             <span class="material-symbols-outlined">notifications</span>
             <span class="absolute -right-1 -top-1 h-2 w-2 rounded-full bg-error"></span>
           </div>
           <span class="font-label-sm text-label-sm">Alerts</span>
         </a>
-        <a class="flex flex-col items-center justify-center text-on-surface-variant transition-colors duration-200 active:scale-90 hover:text-primary" href="#/caregiver-history">
+        <a class="flex min-w-0 flex-1 flex-col items-center justify-center rounded-[16px] px-2 py-2 transition-colors duration-200 active:scale-90 hover:bg-surface-container-low" data-bottom-nav-link="caregiver" href="#/caregiver-history">
           <span class="material-symbols-outlined">history</span>
           <span class="font-label-sm text-label-sm">History</span>
         </a>
-        <a class="flex flex-col items-center justify-center rounded-xl bg-secondary-container/10 px-3 py-1 text-primary-container transition-transform duration-200 active:scale-90" href="#/caregiver-profile">
+        <a class="flex min-w-0 flex-1 flex-col items-center justify-center rounded-[16px] px-2 py-2 transition-transform duration-200 active:scale-90 hover:bg-surface-container-low" data-bottom-nav-link="caregiver" href="#/caregiver-profile">
           <span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">person</span>
           <span class="font-label-sm text-label-sm">Profile</span>
         </a>

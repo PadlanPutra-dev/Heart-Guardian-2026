@@ -10,9 +10,9 @@ function getPatientNavItems(activeTab) {
   return items.map((item) => {
     const isActive = item.id === activeTab;
     return `
-      <a href="${item.href}" class="flex flex-col items-center justify-center rounded-xl px-3 py-1 transition-all duration-150 ${isActive ? 'bg-secondary-container text-on-secondary-container' : 'text-on-surface-variant hover:text-primary'}">
-        <span class="material-symbols-outlined ${isActive ? 'text-[24px]' : ''}" style="${isActive ? "font-variation-settings: 'FILL' 1;" : ''}">${item.icon}</span>
-        <span class="font-label-sm">${item.label}</span>
+      <a href="${item.href}" data-bottom-nav-link="patient" class="flex min-w-0 flex-1 flex-col items-center justify-center rounded-[16px] px-2 py-2 transition-all duration-200 active:scale-90 ${isActive ? 'bg-primary/10 text-primary shadow-sm' : 'text-on-surface-variant hover:bg-surface-container-low'}">
+        <span class="material-symbols-outlined ${isActive ? 'text-[22px]' : ''}" style="${isActive ? "font-variation-settings: 'FILL' 1;" : ''}">${item.icon}</span>
+        <span class="font-label-sm text-label-sm">${item.label}</span>
       </a>
     `;
   }).join('');
@@ -21,9 +21,9 @@ function getPatientNavItems(activeTab) {
 export function createPatientPageShell({ title, activeTab, headerActions = '', headerIcon = 'home', children, bodyClass = 'bg-background' }) {
   return `
     <div class="min-h-screen ${bodyClass} pb-24 text-on-surface">
-      <header class="sticky top-0 z-40 flex h-16 w-full items-center justify-between border-b border-outline-variant bg-surface px-margin-screen">
+      <header class="sticky top-0 z-40 flex h-16 w-full items-center justify-between border-b border-outline-variant/40 bg-white/85 px-margin-screen backdrop-blur-md">
         <div class="flex items-center gap-3">
-          <div class="flex h-10 w-10 items-center justify-center overflow-hidden rounded-full border border-outline-variant bg-surface-container-high">
+          <div class="flex h-10 w-10 items-center justify-center overflow-hidden rounded-full border border-primary/10 bg-primary/10">
             <span class="material-symbols-outlined text-primary">${headerIcon}</span>
           </div>
           <div class="flex flex-col">
@@ -34,9 +34,11 @@ export function createPatientPageShell({ title, activeTab, headerActions = '', h
         <div class="flex items-center gap-2">${headerActions}</div>
       </header>
 
-      ${children}
+      <div class="mx-auto w-full max-w-6xl px-0 sm:px-4 lg:px-6">
+        ${children}
+      </div>
 
-      <nav class="fixed bottom-0 left-0 z-50 flex w-full items-center justify-around border-t border-outline-variant bg-surface px-4 py-2" style="padding-bottom: calc(12px + env(safe-area-inset-bottom));">
+      <nav class="fixed bottom-0 left-0 z-50 flex w-full items-center justify-around rounded-t-[20px] border-t border-outline-variant bg-white/95 px-2 py-2 shadow-[0px_-4px_20px_rgba(0,0,0,0.04)]" style="padding-bottom: calc(12px + env(safe-area-inset-bottom));">
         ${getPatientNavItems(activeTab)}
       </nav>
     </div>

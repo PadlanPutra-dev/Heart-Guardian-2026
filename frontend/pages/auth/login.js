@@ -1,7 +1,7 @@
 export function createLoginPage() {
   return `
-    <section class="flex min-h-screen items-center justify-center bg-background px-6 py-8 text-on-background sm:px-8 lg:px-10">
-      <main class="relative w-full max-w-[480px] overflow-hidden rounded-[20px] bg-surface-container-lowest p-8 shadow-[0_4px_20px_rgba(0,0,0,0.04)] md:p-12">
+    <section class="flex min-h-screen items-center justify-center bg-background px-3 py-8 text-on-background sm:px-6 lg:px-8">
+      <main class="auth-card relative w-full overflow-hidden rounded-[20px] bg-surface-container-lowest p-6 shadow-[0_4px_20px_rgba(0,0,0,0.04)] sm:p-8 md:p-12">
         <div class="pointer-events-none absolute right-0 top-0 -mr-16 -mt-16 h-48 w-48 rounded-full bg-primary-fixed opacity-10 blur-3xl"></div>
 
         <div class="relative z-10 mb-section-gap flex flex-col items-center">

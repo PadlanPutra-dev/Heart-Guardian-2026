@@ -13,13 +13,13 @@ export function createDoctorAlertsPage(authState) {
         </button>
       </header>
 
-      <main class="safe-bottom px-margin-screen pt-20">
+      <main class="dashboard-shell mx-auto w-full safe-bottom px-margin-screen pt-20 lg:px-8">
         <section class="mb-section-gap">
           <h2 class="mb-1 font-headline-lg text-headline-lg text-on-background">Alerts</h2>
           <p class="font-body-md text-body-md text-on-surface-variant">AI-generated patient alerts requiring your attention.</p>
         </section>
 
-        <section class="mb-stack-gap grid grid-cols-2 gap-stack-gap">
+        <section class="mb-stack-gap grid grid-cols-2 gap-stack-gap md:grid-cols-2 lg:grid-cols-4">
           <div class="rounded-[20px] border border-outline-variant/30 bg-surface-container-lowest p-padding-card shadow-[0px_4px_20px_rgba(0,0,0,0.04)]">
             <p class="mb-1 font-label-sm text-label-sm uppercase text-on-surface-variant">Total Today</p>
             <p class="font-display-lg text-display-lg text-primary">12</p>
@@ -174,26 +174,26 @@ export function createDoctorAlertsPage(authState) {
         </section>
       </main>
 
-      <nav class="fixed bottom-0 left-0 z-50 flex w-full items-center justify-around border-t border-outline-variant bg-surface px-4 py-2 pb-safe rounded-t-xl" style="box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.04);">
-        <a class="flex flex-col items-center justify-center rounded-full px-4 py-1 text-on-surface-variant transition-all hover:bg-surface-container-low" href="#/dashboard">
-          <span class="material-symbols-outlined">dashboard</span>
-          <span class="mt-1 font-label-sm text-label-sm">Home</span>
+      <nav class="fixed bottom-0 left-0 z-50 grid w-full grid-cols-5 items-center rounded-t-[24px] border-t border-outline-variant/60 bg-white/95 px-2 py-2 pb-safe shadow-[0px_-8px_30px_rgba(15,23,42,0.08)] backdrop-blur">
+        <a class="flex min-w-0 flex-1 flex-col items-center justify-center rounded-[16px] px-2 py-1 text-center text-on-surface-variant transition-all duration-200 hover:bg-secondary-container/50 active:scale-95" href="#/dashboard" data-bottom-nav-link="doctor">
+          <span class="material-symbols-outlined">home</span>
+          <span class="mt-1 whitespace-nowrap font-label-sm text-label-sm">Home</span>
         </a>
-        <a class="flex flex-col items-center justify-center rounded-full px-4 py-1 text-on-surface-variant transition-all hover:bg-surface-container-low" href="#/doctor-patients">
+        <a class="flex min-w-0 flex-1 flex-col items-center justify-center rounded-[16px] px-2 py-1 text-center text-on-surface-variant transition-all duration-200 hover:bg-secondary-container/50 active:scale-95" href="#/doctor-patients" data-bottom-nav-link="doctor">
           <span class="material-symbols-outlined">group</span>
-          <span class="mt-1 font-label-sm text-label-sm">Patients</span>
+          <span class="mt-1 whitespace-nowrap font-label-sm text-label-sm">Patients</span>
         </a>
-        <a class="flex flex-col items-center justify-center rounded-full px-4 py-1 text-on-surface-variant transition-all hover:bg-surface-container-low" href="#/doctor-calendar">
+        <a class="flex min-w-0 flex-1 flex-col items-center justify-center rounded-[16px] px-2 py-1 text-center text-on-surface-variant transition-all duration-200 hover:bg-secondary-container/50 active:scale-95" href="#/doctor-calendar" data-bottom-nav-link="doctor">
           <span class="material-symbols-outlined">calendar_today</span>
-          <span class="mt-1 font-label-sm text-label-sm">Calendar</span>
+          <span class="mt-1 whitespace-nowrap font-label-sm text-label-sm">Appointments</span>
         </a>
-        <a class="flex flex-col items-center justify-center rounded-full bg-secondary-container px-4 py-1 text-on-secondary-container transition-all" href="#/doctor-alerts">
+        <a class="flex min-w-0 flex-1 flex-col items-center justify-center rounded-[16px] px-2 py-1 text-center text-on-surface-variant transition-all duration-200 hover:bg-secondary-container/50 active:scale-95" href="#/doctor-alerts" data-bottom-nav-link="doctor">
           <span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">notification_important</span>
-          <span class="mt-1 font-label-sm text-label-sm">Alerts</span>
+          <span class="mt-1 whitespace-nowrap font-label-sm text-label-sm">Alerts</span>
         </a>
-        <a class="flex flex-col items-center justify-center rounded-full px-4 py-1 text-on-surface-variant transition-all hover:bg-surface-container-low" href="#/profile">
+        <a class="flex min-w-0 flex-1 flex-col items-center justify-center rounded-[16px] px-2 py-1 text-center text-on-surface-variant transition-all duration-200 hover:bg-secondary-container/50 active:scale-95" href="#/doctor-profile" data-bottom-nav-link="doctor">
           <span class="material-symbols-outlined">person</span>
-          <span class="mt-1 font-label-sm text-label-sm">Profile</span>
+          <span class="mt-1 whitespace-nowrap font-label-sm text-label-sm">Profile</span>
         </a>
       </nav>
     </div>

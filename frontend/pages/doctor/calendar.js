@@ -20,10 +20,10 @@ export function createDoctorCalendarPage(authState) {
         </div>
       </header>
 
-      <main class="flex-1 overflow-y-auto px-margin-screen pb-24">
+      <main class="dashboard-shell mx-auto w-full flex-1 overflow-y-auto px-margin-screen pb-24 lg:px-8">
         <p class="mb-6 mt-4 font-body-md text-on-surface-variant">Manage your consultation schedule.</p>
 
-        <section class="mb-section-gap grid grid-cols-2 gap-3">
+        <section class="mb-section-gap grid grid-cols-2 gap-3 md:grid-cols-2 lg:grid-cols-4">
           <div class="rounded-card border border-surface-container bg-surface-container-lowest p-padding-card shadow-medical">
             <div class="mb-2 flex items-start justify-between">
               <span class="material-symbols-outlined text-[20px] text-primary" data-icon="calendar_today">calendar_today</span>
@@ -211,27 +211,27 @@ export function createDoctorCalendarPage(authState) {
         </section>
       </main>
 
-      <nav class="fixed bottom-0 z-50 flex h-20 w-full items-center justify-around border-t border-surface-container-highest bg-surface px-4 pb-2">
-        <button class="flex flex-col items-center justify-center px-4 py-1 text-on-surface-variant transition-transform active:scale-90 hover:bg-surface-container">
+      <nav class="fixed bottom-0 z-50 grid h-20 w-full grid-cols-5 items-center rounded-t-[24px] border-t border-outline-variant/60 bg-white/95 px-2 pb-2 shadow-[0px_-8px_30px_rgba(15,23,42,0.08)] backdrop-blur">
+        <a class="flex min-w-0 flex-1 flex-col items-center justify-center rounded-[16px] px-2 py-1 text-center text-on-surface-variant transition-all duration-200 hover:bg-secondary-container/50 active:scale-95" href="#/dashboard" data-bottom-nav-link="doctor">
           <span class="material-symbols-outlined" data-icon="home">home</span>
-          <span class="font-label-sm text-label-sm">Home</span>
-        </button>
-        <button class="flex flex-col items-center justify-center px-4 py-1 text-on-surface-variant transition-transform active:scale-90 hover:bg-surface-container">
+          <span class="whitespace-nowrap font-label-sm text-label-sm">Home</span>
+        </a>
+        <a class="flex min-w-0 flex-1 flex-col items-center justify-center rounded-[16px] px-2 py-1 text-center text-on-surface-variant transition-all duration-200 hover:bg-secondary-container/50 active:scale-95" href="#/doctor-patients" data-bottom-nav-link="doctor">
           <span class="material-symbols-outlined" data-icon="group">group</span>
-          <span class="font-label-sm text-label-sm">Patients</span>
-        </button>
-        <button class="flex flex-col items-center justify-center rounded-full bg-secondary-container px-4 py-1 text-on-secondary-container transition-transform active:scale-90">
+          <span class="whitespace-nowrap font-label-sm text-label-sm">Patients</span>
+        </a>
+        <a class="flex min-w-0 flex-1 flex-col items-center justify-center rounded-[16px] px-2 py-1 text-center text-on-surface-variant transition-all duration-200 hover:bg-secondary-container/50 active:scale-95" href="#/doctor-calendar" data-bottom-nav-link="doctor">
           <span class="material-symbols-outlined" data-icon="event" style="font-variation-settings: 'FILL' 1;">event</span>
-          <span class="font-label-sm text-label-sm">Appointments</span>
-        </button>
-        <button class="flex flex-col items-center justify-center px-4 py-1 text-on-surface-variant transition-transform active:scale-90 hover:bg-surface-container">
+          <span class="whitespace-nowrap font-label-sm text-label-sm">Appointments</span>
+        </a>
+        <a class="flex min-w-0 flex-1 flex-col items-center justify-center rounded-[16px] px-2 py-1 text-center text-on-surface-variant transition-all duration-200 hover:bg-secondary-container/50 active:scale-95" href="#/doctor-alerts" data-bottom-nav-link="doctor">
           <span class="material-symbols-outlined" data-icon="notifications">notifications</span>
-          <span class="font-label-sm text-label-sm">Alerts</span>
-        </button>
-        <button class="flex flex-col items-center justify-center px-4 py-1 text-on-surface-variant transition-transform active:scale-90 hover:bg-surface-container">
+          <span class="whitespace-nowrap font-label-sm text-label-sm">Alerts</span>
+        </a>
+        <a class="flex min-w-0 flex-1 flex-col items-center justify-center rounded-[16px] px-2 py-1 text-center text-on-surface-variant transition-all duration-200 hover:bg-secondary-container/50 active:scale-95" href="#/doctor-profile" data-bottom-nav-link="doctor">
           <span class="material-symbols-outlined" data-icon="account_circle">account_circle</span>
-          <span class="font-label-sm text-label-sm">Profile</span>
-        </button>
+          <span class="whitespace-nowrap font-label-sm text-label-sm">Profile</span>
+        </a>
       </nav>
     </div>
   `;

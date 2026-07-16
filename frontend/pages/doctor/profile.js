@@ -11,7 +11,7 @@ export function createDoctorProfilePage(authState) {
         </button>
       </header>
 
-      <main class="mx-auto mt-6 max-w-4xl space-y-section-gap px-margin-screen">
+      <main class="dashboard-shell mx-auto mt-6 w-full space-y-section-gap px-margin-screen lg:px-8">
         <section class="flex flex-col items-center gap-6 rounded-[20px] border border-outline-variant/30 bg-surface-container-lowest p-padding-card shadow-[0px_4px_20px_rgba(0,0,0,0.04)] md:flex-row md:items-start">
           <div class="relative h-24 w-24 overflow-hidden rounded-full border-4 border-white shadow-md md:h-32 md:w-32">
             <img class="h-full w-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAq2fDhBXC9mfauNjWb05ivFQmCMgTc-oyRNK83zBz6n76dX3pY_qib_tXpTfVjGkUfmoEE7AKcXhgL_uBaY3yYz3lPtXpmhawdUA7c8sdk5p4aA_lBjVkut-aeazVrryk5VyoM_rOb-PfswIAhjMG6mBbOrhF9gmvqgv71RwhMuTXDvSw695dv3E66tbOC0w5Zo7wcQ_vc-RelKsWzRp9xpO2iT3o9_7qgYdgJv9DmawqAkUYo1igLaA" alt="Doctor profile" />
@@ -235,7 +235,11 @@ export function createDoctorProfilePage(authState) {
         <section class="space-y-stack-gap">
           <h3 class="px-2 font-headline-md text-headline-md text-on-surface">Account</h3>
           <div class="overflow-hidden rounded-[20px] bg-surface-container-lowest shadow-[0px_4px_20px_rgba(0,0,0,0.04)]">
-            <button class="flex w-full items-center gap-4 p-padding-card text-on-surface transition-colors hover:bg-surface-container-low">
+            <button
+              type="button"
+              class="flex w-full items-center gap-4 p-padding-card text-on-surface transition-colors hover:bg-surface-container-low"
+              data-logout="doctor"
+            >
               <span class="material-symbols-outlined text-outline">logout</span>
               <span class="font-body-md font-semibold">Logout</span>
             </button>
@@ -252,26 +256,26 @@ export function createDoctorProfilePage(authState) {
         </section>
       </main>
 
-      <nav class="fixed bottom-0 z-50 flex h-20 w-full items-center justify-around border-t border-outline-variant bg-surface px-inline-gap pb-2">
-        <a class="flex flex-col items-center justify-center rounded-full px-4 py-1 text-on-surface-variant transition-colors hover:bg-surface-container-low" href="#/dashboard">
+      <nav class="fixed bottom-0 z-50 grid h-20 w-full grid-cols-5 items-center rounded-t-[24px] border-t border-outline-variant/60 bg-white/95 px-2 pb-2 shadow-[0px_-8px_30px_rgba(15,23,42,0.08)] backdrop-blur">
+        <a class="flex min-w-0 flex-1 flex-col items-center justify-center rounded-[16px] px-2 py-1 text-center text-on-surface-variant transition-all duration-200 hover:bg-secondary-container/50 active:scale-95" href="#/dashboard" data-bottom-nav-link="doctor">
           <span class="material-symbols-outlined">home</span>
-          <span class="font-label-sm text-label-sm">Home</span>
+          <span class="whitespace-nowrap font-label-sm text-label-sm">Home</span>
         </a>
-        <a class="flex flex-col items-center justify-center rounded-full px-4 py-1 text-on-surface-variant transition-colors hover:bg-surface-container-low" href="#/doctor-patients">
+        <a class="flex min-w-0 flex-1 flex-col items-center justify-center rounded-[16px] px-2 py-1 text-center text-on-surface-variant transition-all duration-200 hover:bg-secondary-container/50 active:scale-95" href="#/doctor-patients" data-bottom-nav-link="doctor">
           <span class="material-symbols-outlined">group</span>
-          <span class="font-label-sm text-label-sm">Patients</span>
+          <span class="whitespace-nowrap font-label-sm text-label-sm">Patients</span>
         </a>
-        <a class="flex flex-col items-center justify-center rounded-full px-4 py-1 text-on-surface-variant transition-colors hover:bg-surface-container-low" href="#/doctor-calendar">
+        <a class="flex min-w-0 flex-1 flex-col items-center justify-center rounded-[16px] px-2 py-1 text-center text-on-surface-variant transition-all duration-200 hover:bg-secondary-container/50 active:scale-95" href="#/doctor-calendar" data-bottom-nav-link="doctor">
           <span class="material-symbols-outlined">calendar_today</span>
-          <span class="font-label-sm text-label-sm">Schedule</span>
+          <span class="whitespace-nowrap font-label-sm text-label-sm">Appointments</span>
         </a>
-        <a class="flex flex-col items-center justify-center rounded-full px-4 py-1 text-on-surface-variant transition-colors hover:bg-surface-container-low" href="#/doctor-alerts">
+        <a class="flex min-w-0 flex-1 flex-col items-center justify-center rounded-[16px] px-2 py-1 text-center text-on-surface-variant transition-all duration-200 hover:bg-secondary-container/50 active:scale-95" href="#/doctor-alerts" data-bottom-nav-link="doctor">
           <span class="material-symbols-outlined">emergency</span>
-          <span class="font-label-sm text-label-sm">Alerts</span>
+          <span class="whitespace-nowrap font-label-sm text-label-sm">Alerts</span>
         </a>
-        <a class="flex flex-col items-center justify-center rounded-full bg-secondary-container px-4 py-1 text-on-secondary-container scale-95 transition-transform duration-150" href="#/doctor-profile">
+        <a class="flex min-w-0 flex-1 flex-col items-center justify-center rounded-[16px] px-2 py-1 text-center text-on-surface-variant transition-all duration-200 hover:bg-secondary-container/50 active:scale-95" href="#/doctor-profile" data-bottom-nav-link="doctor">
           <span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">person</span>
-          <span class="font-label-sm text-label-sm">Profile</span>
+          <span class="whitespace-nowrap font-label-sm text-label-sm">Profile</span>
         </a>
       </nav>
     </div>
