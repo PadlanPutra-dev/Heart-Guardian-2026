@@ -1,0 +1,87 @@
+:root {
+  color-scheme: light;
+  font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+  min-height: 100%;
+  overflow-y: auto;
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  min-width: 320px;
+  overflow-x: hidden;
+  overflow-y: auto;
+  background: #f8f9fb;
+  color: #191c1e;
+}
+
+body, button, input {
+  font-family: inherit;
+}
+
+#app {
+  min-height: 100vh;
+  width: 100%;
+}
+
+a {
+  text-decoration: none;
+}
+
+.shadow-health-card {
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.04);
+}
+
+.input-clinical {
+  background-color: #f9fafb;
+  border: 1px solid #e5e7eb;
+}
+
+.input-clinical:focus {
+  border-color: #0b7a28;
+  outline: none;
+  box-shadow: 0 0 0 1px #0b7a28;
+}
+
+input[type="radio"]:checked + div {
+  border-color: #0b7a28;
+  background-color: #c9ebcd;
+  color: #005f1b;
+}
+
+input[type="radio"]:checked + div .material-symbols-outlined {
+  color: #0b7a28;
+}
+
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+
+.no-scrollbar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+@media (max-width: 640px) {
+  body {
+    font-size: 15px;
+  }
+
+  #app {
+    overflow-x: hidden;
+  }
+}
+
+@media (min-width: 769px) {
+  body {
+    padding-bottom: 24px;
+  }
+}
