@@ -198,6 +198,34 @@ export function createDoctorPatientDetailsPage(authState = {}) {
           <p class="mt-3 font-body-md text-body-md text-on-surface-variant">+62 xxx xxxx xxxx</p>
         </section>
 
+        <section class="bg-surface-container-lowest rounded-20px p-padding-card shadow-soft">
+          <div class="flex justify-between items-center mb-6">
+            <div class="flex items-center gap-2">
+              <span class="material-symbols-outlined text-primary" style="font-variation-settings: 'FILL' 1;">ecg</span>
+              <h3 class="font-headline-md text-headline-md text-primary">Latest ECG Analysis</h3>
+            </div>
+            <span class="text-on-surface-variant font-label-sm text-label-sm bg-surface px-3 py-1 rounded-full">ML Powered</span>
+          </div>
+          
+          <!-- Arrhythmia Detection -->
+          <div class="grid grid-cols-2 gap-3 mb-4">
+            <div class="bg-surface rounded-lg p-4">
+              <p class="font-label-sm text-label-sm text-on-surface-variant mb-2">Arrhythmia Type</p>
+              <p class="font-headline-md text-headline-md text-on-surface">Normal Sinus</p>
+              <p class="font-label-sm text-label-sm text-on-surface-variant mt-1">Beats: 78</p>
+            </div>
+            <div class="bg-surface rounded-lg p-4">
+              <p class="font-label-sm text-label-sm text-on-surface-variant mb-2">Infarction Risk</p>
+              <p class="font-headline-md text-headline-md text-on-surface">2.3%</p>
+              <div class="w-full h-1.5 bg-surface-container-high rounded-full mt-2 overflow-hidden">
+                <div class="h-full bg-primary rounded-full" style="width: 2.3%"></div>
+              </div>
+            </div>
+          </div>
+
+          <p class="text-label-sm text-on-surface-variant text-right">Analyzed: 2 mins ago</p>
+        </section>
+
         <section class="grid grid-cols-2 gap-stack-gap">
           <button class="flex flex-col items-center justify-center gap-2 bg-primary text-on-primary p-4 rounded-20px shadow-soft active:scale-95 transition-all">
             <span class="material-symbols-outlined">event_note</span>

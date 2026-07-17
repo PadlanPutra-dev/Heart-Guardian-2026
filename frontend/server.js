@@ -1,8 +1,11 @@
 const http = require('http');
+const https = require('https');
 const fs = require('fs');
 const path = require('path');
+const url = require('url');
 
 const PORT = process.env.PORT || 3000;
+const BACKEND_URL = 'http://localhost:5000';
 const ROOT_DIR = __dirname;
 
 const MIME_TYPES = {
@@ -18,9 +21,44 @@ const MIME_TYPES = {
   '.txt': 'text/plain; charset=utf-8',
 };
 
+// Proxy API requests to backend
+function proxyRequest(req, res, pathname) {
+  const backendUrl = new URL(pathname + (req.url.includes('?') ? req.url.substring(req.url.indexOf('?')) : ''), BACKEND_URL);
+  
+  const options = {
+    hostname: backendUrl.hostname,
+    port: backendUrl.port,
+    path: backendUrl.pathname + backendUrl.search,
+    method: req.method,
+    headers: {
+      ...req.headers,
+      host: backendUrl.hostname
+    }
+  };
+
+  const proxyReq = http.request(options, (proxyRes) => {
+    res.writeHead(proxyRes.statusCode, proxyRes.headers);
+    proxyRes.pipe(res);
+  });
+
+  proxyReq.on('error', (err) => {
+    console.error('Proxy error:', err.message);
+    res.writeHead(502, { 'Content-Type': 'application/json' });
+    res.end(JSON.stringify({ error: 'Backend unavailable', details: err.message }));
+  });
+
+  req.pipe(proxyReq);
+}
+
 const server = http.createServer((req, res) => {
+  const pathname = decodeURIComponent(req.url.split('?')[0]);
+  
+  // Proxy API requests to backend
+  if (pathname.startsWith('/api/')) {
+    return proxyRequest(req, res, pathname);
+  }
+
   let requestPath = req.url === '/' ? '/index.html' : req.url;
-  const pathname = decodeURIComponent(requestPath.split('?')[0]);
   const safePath = path.normalize(pathname).replace(/^([.]{1,2}[\\/])+/g, '');
   let filePath = path.join(ROOT_DIR, safePath);
 

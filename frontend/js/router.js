@@ -15,6 +15,7 @@ import { createCaregiverProfilePage } from '../pages/caregiver/profile.js';
 import { createPatientAiInsightsPage } from '../pages/patient/ai-insights.js';
 import { createPatientHistoryPage } from '../pages/patient/history.js';
 import { createPatientMonitoringPage } from '../pages/patient/monitoring.js';
+import { initECGUploadHandlers } from '../components/ecg-upload.js';
 import { createPatientProfilePage } from '../pages/patient/profile.js';
 import { attachSplashInteractions, createSplashScreen } from '../pages/splash/index.js';
 import { clearAuthState, getAuthState, getAuthToken, setAuthState } from './state.js';
@@ -208,6 +209,8 @@ async function renderPage() {
         const profile = await fetchProfile(token);
         setAuthState({ token, user: profile.data.user });
         renderLayout(createPatientMonitoringPage(profile.data));
+        // Initialize ECG upload handlers after render
+        setTimeout(() => initECGUploadHandlers(profile.data), 100);
       } catch (error) {
         console.error('Monitoring page load failed:', error);
         clearAuthState();

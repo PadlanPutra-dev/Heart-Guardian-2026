@@ -1,4 +1,5 @@
 import { createPatientPageShell } from './layout.js';
+import { createECGUploadComponent, initECGUploadHandlers } from '../../components/ecg-upload.js';
 
 function getUserName(authState, fallback = 'Alex') {
   return authState?.user?.fullName || authState?.user?.name || authState?.fullName || authState?.name || fallback;
@@ -293,6 +294,11 @@ export function createPatientMonitoringPage(authState) {
               </div>
             </div>
           </div>
+        </section>
+
+        <section class="space-y-stack-gap">
+          <h3 class="px-1 font-headline-md text-headline-md text-on-surface">ECG Analysis</h3>
+          ${createECGUploadComponent()}
         </section>
       </main>
 

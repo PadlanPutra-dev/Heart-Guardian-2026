@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ECG Upload Test</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gray-50">
+  <div class="max-w-2xl mx-auto p-8">
+    <h1 class="text-3xl font-bold mb-8">🫀 ECG Analysis Test</h1>
+
+    <div class="bg-white p-6 rounded-lg shadow-lg mb-6">
+      <h2 class="text-xl font-bold mb-4">Upload ECG Files</h2>
+      
+      <div class="mb-4">
+        <label class="block mb-2">HEA File:</label>
+        <input type="file" id="heaFile" accept=".hea" class="border p-2 w-full">
+      </div>
+
+      <div class="mb-4">
+        <label class="block mb-2">DAT File:</label>
+        <input type="file" id="datFile" accept=".dat" class="border p-2 w-full">
+      </div>
+
+      <div class="mb-4">
+        <label class="block mb-2">Sampling Rate (Hz):</label>
+        <input type="number" id="fs" value="360" class="border p-2 w-full">
+      </div>
+
+      <button id="analyzeBtn" class="bg-green-600 text-white px-6 py-2 rounded hover:bg-green-700 w-full font-bold">
+        Analyze ECG
+      </button>
+    </div>
+
+    <div id="loading" class="hidden bg-blue-50 p-4 rounded mb-6">
+      <p class="text-blue-700">⏳ Analyzing...</p>
+    </div>
+
+    <div id="results" class="hidden bg-green-50 p-6 rounded-lg border border-green-200 mb-6">
+      <h3 class="text-lg font-bold text-green-800 mb-4">✅ Analysis Results</h3>
+      
+      <div class="grid grid-cols-2 gap-4 mb-4">
+        <div class="bg-white p-4 rounded">
+          <p class="text-gray-600 text-sm">Beats Detected</p>
+          <p id="beatsCount" class="text-2xl font-bold text-green-700">--</p>
+        </div>
+        <div class="bg-white p-4 rounded">
+          <p class="text-gray-600 text-sm">Arrhythmia Class</p>
+          <p id="arrhythmiaClass" class="text-2xl font-bold text-blue-700">--</p>
+        </div>
+      </div>
+
+      <div class="bg-white p-4 rounded mb-4">
+        <p class="text-gray-600 text-sm mb-2">Infarction Risk</p>
+        <div class="flex items-center gap-4">
+          <div class="flex-1 bg-gray-200 rounded-full h-4 overflow-hidden">
+            <div id="riskBar" class="bg-red-600 h-full rounded-full" style="width: 0%"></div>
+          </div>
+          <p id="riskPercent" class="text-2xl font-bold text-red-700 w-16">0%</p>
+        </div>
+      </div>
+
+      <div class="bg-yellow-50 border border-yellow-200 p-4 rounded">
+        <p class="font-bold text-yellow-800 mb-2">⚠️ AI Message:</p>
+        <p id="message" class="text-yellow-700"></p>
+      </div>
+    </div>
+
+    <div id="error" class="hidden bg-red-50 p-6 rounded-lg border border-red-200 mb-6">
+      <h3 class="text-lg font-bold text-red-800 mb-2">❌ Error</h3>
+      <p id="errorText" class="text-red-700 font-mono text-sm break-words"></p>
+    </div>
+
+    <div class="bg-gray-100 p-4 rounded text-sm text-gray-600">
+      <p>📝 To test:</p>
+      <ol class="list-decimal ml-5 mt-2">
+        <li>Browse to <code>s0014lre.hea</code> from <code>data/ptdb/patient001/</code></li>
+        <li>Browse to <code>s0014lre.dat</code> from the same folder</li>
+        <li>Click "Analyze ECG"</li>
+        <li>Check the results below</li>
+      </ol>
+    </div>
+  </div>
+
+  <script>
+    document.getElementById('analyzeBtn').addEventListener('click', async () => {
+      const heaFile = document.getElementById('heaFile').files[0];
+      const datFile = document.getElementById('datFile').files[0];
+      const fs = document.getElementById('fs').value;
+
+      if (!heaFile || !datFile) {
+        alert('Please select both files');
+        return;
+      }
+
+      // Reset
+      document.getElementById('results').classList.add('hidden');
+      document.getElementById('error').classList.add('hidden');
+      document.getElementById('loading').classList.remove('hidden');
+
+      try {
+        const formData = new FormData();
+        formData.append('heaFile', heaFile);
+        formData.append('datFile', datFile);
+        formData.append('fs', fs);
+
+        const response = await fetch('/api/predict-file/1', {
+          method: 'POST',
+          body: formData
+        });
+
+        const data = await response.json();
+
+        if (!response.ok) {
+          throw new Error(data.details || data.error || 'Request failed');
+        }
+
+        // Display results
+        const pred = data.prediction;
+        document.getElementById('beatsCount').textContent = pred.beats_detected;
+        document.getElementById('arrhythmiaClass').textContent = pred.arrhythmia_class;
+        
+        const riskPercent = Math.round(pred.infarction_prob * 100);
+        document.getElementById('riskPercent').textContent = riskPercent + '%';
+        document.getElementById('riskBar').style.width = riskPercent + '%';
+        document.getElementById('message').textContent = pred.message;
+
+        document.getElementById('results').classList.remove('hidden');
+      } catch (err) {
+        document.getElementById('errorText').textContent = err.message;
+        document.getElementById('error').classList.remove('hidden');
+      } finally {
+        document.getElementById('loading').classList.add('hidden');
+      }
+    });
+  </script>
+</body>
+</html>
