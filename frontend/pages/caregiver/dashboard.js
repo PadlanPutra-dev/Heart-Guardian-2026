@@ -171,7 +171,7 @@ export function createCaregiverDashboardPage(authState) {
         </div>
       </main>
 
-      <nav class="fixed bottom-0 z-50 flex h-20 w-full items-center justify-around border-t border-outline-variant/50 bg-white/95 px-2 shadow-[0px_-8px_30px_rgba(15,23,42,0.08)] backdrop-blur">
+      <nav class="fixed bottom-0 left-0 right-0 z-50 mx-auto flex h-20 w-full max-w-6xl items-center justify-around rounded-t-[24px] border-t border-outline-variant/50 bg-white/95 px-2 shadow-[0px_-8px_30px_rgba(15,23,42,0.08)] backdrop-blur">
         <a class="flex min-w-0 flex-1 flex-col items-center justify-center rounded-[16px] px-2 py-2 transition-transform duration-200 active:scale-90 hover:bg-surface-container-low" data-bottom-nav-link="caregiver" href="#/dashboard">
           <span class="material-symbols-outlined">home</span>
           <span class="font-label-sm text-label-sm">Home</span>

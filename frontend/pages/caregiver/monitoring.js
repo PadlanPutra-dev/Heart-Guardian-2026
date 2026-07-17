@@ -186,7 +186,7 @@ export function createCaregiverMonitoringPage(authState) {
         </section>
       </main>
 
-      <nav class="fixed bottom-0 left-0 z-50 flex w-full items-center justify-around rounded-t-xl border-t border-outline-variant bg-white/95 px-2 py-2 shadow-[0px_-4px_20px_rgba(0,0,0,0.04)] backdrop-blur">
+      <nav class="fixed bottom-0 left-0 right-0 z-50 mx-auto flex h-20 w-full max-w-6xl items-center justify-around rounded-t-[24px] border-t border-outline-variant bg-white/95 px-2 py-2 shadow-[0px_-4px_20px_rgba(0,0,0,0.04)] backdrop-blur">
         <a class="flex min-w-0 flex-1 flex-col items-center justify-center rounded-[16px] px-2 py-2 transition-all duration-200 active:scale-90 hover:bg-surface-container-high" data-bottom-nav-link="caregiver" href="#/dashboard">
           <span class="material-symbols-outlined">home</span>
           <span class="font-label-sm text-label-sm">Home</span>

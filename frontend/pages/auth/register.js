@@ -18,21 +18,17 @@ export function createRegisterPage(selectedRole = 'patient', stage = 'role-selec
     return `
       <div class="min-h-screen w-full overflow-x-hidden bg-background text-on-surface">
         <header class="sticky top-0 z-50 w-full border-b border-surface-variant bg-surface">
-          <div class="mx-auto flex h-16 w-full max-w-md items-center px-margin-screen">
-            <button data-back-to-role class="rounded-full p-2 text-primary transition-colors hover:bg-surface-container-low active:opacity-70" type="button">
+          <div class="mx-auto flex h-16 w-full max-w-screen-xl items-center justify-between px-margin-screen">
+            <button data-back-to-role class="-ml-2 rounded-full p-2 text-primary transition-colors hover:bg-surface-container-low active:opacity-70" type="button">
               <span class="material-symbols-outlined" data-icon="arrow_back">arrow_back</span>
             </button>
-            <span class="ml-4 font-headline-md text-headline-md text-primary">Step 1 of 5</span>
+            <button class="-mr-2 rounded-full p-2 text-on-surface-variant transition-colors hover:bg-surface-container-low active:opacity-70" type="button">
+              <span class="material-symbols-outlined">more_vert</span>
+            </button>
           </div>
         </header>
 
         <main class="dashboard-shell mx-auto w-full px-margin-screen pb-32 sm:px-8">
-          <div class="mt-stack-gap">
-            <div class="h-1.5 w-full overflow-hidden rounded-full bg-surface-container">
-              <div class="h-full bg-primary transition-all duration-500" id="registration-progress" style="width: 20%;"></div>
-            </div>
-          </div>
-
           <section class="mt-section-gap">
             <h1 class="mb-2 font-headline-lg-mobile text-headline-lg-mobile text-on-surface">Create Patient Account</h1>
             <p class="font-body-md text-body-md text-on-surface-variant">Create your account to start personalized heart monitoring powered by AI.</p>
@@ -64,13 +60,6 @@ export function createRegisterPage(selectedRole = 'patient', stage = 'role-selec
                   <input class="h-14 w-full rounded-medical border border-[#E5E7EB] bg-[#F9FAFB] pl-12 pr-12 font-body-md text-body-md transition-all focus:border-primary focus:ring-0" id="password" name="password" placeholder="••••••••" type="password" required autocomplete="new-password" />
                   <button class="material-symbols-outlined absolute right-4 top-1/2 -translate-y-1/2 text-on-surface-variant transition-colors hover:text-primary active:opacity-70" data-icon="visibility_off" onclick="window.togglePassword('password')" type="button">visibility_off</button>
                 </div>
-                <div class="mt-1 flex gap-1 px-1">
-                  <div class="h-1 flex-1 rounded-full bg-error"></div>
-                  <div class="h-1 flex-1 rounded-full bg-surface-container"></div>
-                  <div class="h-1 flex-1 rounded-full bg-surface-container"></div>
-                  <div class="h-1 flex-1 rounded-full bg-surface-container"></div>
-                </div>
-                <span class="ml-1 font-label-sm text-label-sm text-error">Weak security</span>
               </div>
 
               <div class="flex flex-col gap-1.5">
@@ -153,7 +142,6 @@ export function createRegisterPage(selectedRole = 'patient', stage = 'role-selec
             <button aria-label="Go back" data-back-to-role class="material-symbols-outlined -ml-2 rounded-full p-2 text-primary transition-colors hover:bg-surface-container-low active:opacity-70">
               arrow_back
             </button>
-            <h1 class="font-headline-md text-headline-md tracking-tight text-primary">Step 1 of 4</h1>
             <button class="material-symbols-outlined -mr-2 rounded-full p-2 text-on-surface-variant transition-colors hover:bg-surface-container-low active:opacity-70">
               more_vert
             </button>
@@ -161,16 +149,6 @@ export function createRegisterPage(selectedRole = 'patient', stage = 'role-selec
         </header>
 
         <main class="dashboard-shell mx-auto w-full px-margin-screen pb-12 sm:px-8">
-          <div class="mt-8 mb-section-gap">
-            <div class="mb-2 flex items-center justify-between">
-              <span class="font-label-lg text-label-lg text-primary">Registration Progress</span>
-              <span class="font-label-lg text-label-lg text-on-surface-variant">25%</span>
-            </div>
-            <div class="progress-bar-container relative h-[6px] w-full overflow-hidden rounded-full bg-[#e1e2e4]">
-              <div class="progress-bar-fill h-full w-[25%] rounded-full bg-primary"></div>
-            </div>
-          </div>
-
           <div class="mb-section-gap">
             <h2 class="mb-2 font-headline-lg-mobile text-headline-lg-mobile text-on-surface">Create Caregiver Account</h2>
             <p class="font-body-md text-body-md leading-relaxed text-on-surface-variant">Create an account to securely monitor and support your loved one's heart health.</p>
@@ -294,16 +272,6 @@ export function createRegisterPage(selectedRole = 'patient', stage = 'role-selec
         </header>
 
         <main class="dashboard-shell mx-auto w-full px-margin-screen py-10 sm:px-8 lg:px-10">
-          <div class="mb-section-gap">
-            <div class="mb-2 flex items-center justify-between">
-              <span class="font-label-lg text-label-lg text-primary">Step 1 of 5</span>
-              <span class="font-label-lg text-label-lg text-outline">20% Complete</span>
-            </div>
-            <div class="h-2 w-full overflow-hidden rounded-full bg-surface-container-highest">
-              <div class="h-full w-[20%] rounded-full bg-primary-container progress-bar-glow transition-all duration-700 ease-out"></div>
-            </div>
-          </div>
-
           <div class="mb-section-gap">
             <h2 class="mb-2 font-headline-lg text-headline-lg text-on-surface">Create Doctor Account</h2>
             <p class="font-body-md text-body-md text-on-surface-variant">Create a verified medical professional account to monitor patients and provide clinical support.</p>

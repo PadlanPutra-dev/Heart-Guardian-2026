@@ -174,7 +174,7 @@ export function createDoctorAlertsPage(authState) {
         </section>
       </main>
 
-      <nav class="fixed bottom-0 left-0 z-50 grid w-full grid-cols-5 items-center rounded-t-[24px] border-t border-outline-variant/60 bg-white/95 px-2 py-2 pb-safe shadow-[0px_-8px_30px_rgba(15,23,42,0.08)] backdrop-blur">
+      <nav class="fixed bottom-0 left-0 right-0 z-50 mx-auto grid h-20 w-full max-w-6xl grid-cols-5 items-center rounded-t-[24px] border-t border-outline-variant/60 bg-white/95 px-2 py-2 pb-safe shadow-[0px_-8px_30px_rgba(15,23,42,0.08)] backdrop-blur">
         <a class="flex min-w-0 flex-1 flex-col items-center justify-center rounded-[16px] px-2 py-1 text-center text-on-surface-variant transition-all duration-200 hover:bg-secondary-container/50 active:scale-95" href="#/dashboard" data-bottom-nav-link="doctor">
           <span class="material-symbols-outlined">home</span>
           <span class="mt-1 whitespace-nowrap font-label-sm text-label-sm">Home</span>
