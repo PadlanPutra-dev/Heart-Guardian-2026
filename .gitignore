@@ -1,0 +1,18 @@
+# ML
+__pycache__/
+*.pyc
+venv/
+.env
+models/*.keras
+models/*.pkl
+data/*.npy
+data/mitdb/
+data/ptdb/
+*.h5
+# Frontend
+node_modules/
+dist/
+.env.local
+# Umum
+*.log
+.DS_Store
