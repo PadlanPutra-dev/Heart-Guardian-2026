@@ -98,7 +98,7 @@ export function createRegisterPage(selectedRole = 'patient', stage = 'role-selec
                 </label>
               </div>
 
-              <button class="mt-section-gap flex h-14 w-full items-center justify-center gap-2 rounded-medical bg-primary font-headline-md text-headline-md text-on-primary shadow-lg transition-all active:scale-95" type="submit">
+              <button class="animated-button mt-section-gap flex h-14 w-full items-center justify-center gap-2 rounded-medical bg-primary font-headline-md text-headline-md text-on-primary shadow-lg transition-all active:scale-95" type="submit">
                 Create Account
                 <span class="material-symbols-outlined" data-icon="arrow_forward">arrow_forward</span>
               </button>

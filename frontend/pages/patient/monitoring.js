@@ -269,7 +269,7 @@ export function createPatientMonitoringPage(authState) {
           </div>
         </section>
 
-        <section class="space-y-stack-gap">
+        <section class="space-y-stack-gap pb-32">
           <h3 class="px-1 font-headline-md text-headline-md text-on-surface">Monitoring Timeline</h3>
           <div class="relative space-y-4 before:absolute before:bottom-2 before:left-4 before:top-2 before:w-[2px] before:bg-outline-variant">
             <div class="relative flex gap-4">

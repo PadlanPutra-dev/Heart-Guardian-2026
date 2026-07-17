@@ -20,12 +20,89 @@ body {
   min-width: 320px;
   overflow-x: hidden;
   overflow-y: auto;
-  background: #f8f9fb;
+  background: linear-gradient(180deg, #f7fbf8 0%, #f4f7fa 100%);
   color: #191c1e;
 }
 
 body, button, input {
   font-family: inherit;
+}
+
+@keyframes pageFadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(12px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes softFloat {
+  0%,
+  100% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-5px);
+  }
+}
+
+@keyframes shimmerGlow {
+  0% {
+    background-position: 200% 0;
+  }
+  100% {
+    background-position: -200% 0;
+  }
+}
+
+.page-enter {
+  animation: pageFadeIn 0.55s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+.card-hover {
+  transition: transform 220ms ease, box-shadow 220ms ease, border-color 220ms ease;
+}
+
+.card-hover:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 14px 28px rgba(15, 23, 42, 0.08);
+  border-color: rgba(0, 95, 27, 0.24);
+}
+
+.animated-button {
+  transition: transform 200ms ease, box-shadow 200ms ease, background-color 200ms ease;
+}
+
+.animated-button:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 10px 20px rgba(15, 23, 42, 0.08);
+}
+
+.animated-button:active {
+  transform: scale(0.98);
+}
+
+.float-icon {
+  animation: softFloat 3.2s ease-in-out infinite;
+}
+
+.glow-surface {
+  position: relative;
+  overflow: hidden;
+}
+
+.glow-surface::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(110deg, transparent 0%, rgba(255,255,255,0.25) 45%, transparent 70%);
+  background-size: 200% 100%;
+  animation: shimmerGlow 4s linear infinite;
+  pointer-events: none;
+  opacity: 0.35;
 }
 
 #app {
