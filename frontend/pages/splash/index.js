@@ -1,45 +1,48 @@
 export function createSplashScreen() {
   return `
-    <section class="flex h-screen w-screen flex-col items-center justify-between overflow-hidden bg-primary-container text-center text-white selection:bg-primary-fixed selection:text-primary">
-      <div class="h-16"></div>
-
-      <div class="fade-in flex flex-1 flex-col items-center justify-center space-y-6">
+    <section id="splash-screen" class="relative flex min-h-screen w-screen items-center justify-center overflow-hidden bg-[#0b7a28] px-5 py-6 text-center text-white selection:bg-primary-fixed selection:text-primary">
+      <div class="fade-in relative z-10 flex w-full max-w-[420px] flex-col items-center justify-center space-y-6 sm:space-y-7">
         <div class="group relative">
-          <div class="absolute -inset-4 rounded-full bg-white/5 blur-2xl transition-all duration-700 group-hover:bg-white/10"></div>
           <img
             id="splash-logo"
             alt="Heart Guardian Logo"
-            class="logo-float relative h-32 w-32 cursor-pointer object-cover drop-shadow-[0_10px_25px_rgba(0,0,0,0.25)] md:h-40 md:w-40"
+            class="logo-float relative h-36 w-36 cursor-pointer rounded-[30px] object-contain shadow-[0_20px_45px_rgba(0,0,0,0.26)] ring-1 ring-white/25 sm:h-44 sm:w-44 md:h-52 md:w-52"
             src="./assets/image/screen.png"
+            role="button"
+            tabindex="0"
+            aria-label="Mulai aplikasi"
           />
         </div>
 
-        <div class="mt-4 text-center">
+        <div class="text-center">
           <h1 class="font-headline-lg-mobile text-headline-lg-mobile tracking-tight text-white md:font-headline-lg md:text-headline-lg">
             Heart Guardian
           </h1>
-          <div class="mx-auto mt-2 h-1 w-12 rounded-full bg-on-primary-container opacity-50"></div>
+          <div class="mx-auto mt-2 h-1 w-14 rounded-full bg-on-primary-container opacity-60"></div>
         </div>
       </div>
 
-      <div class="fade-in pb-12 text-center" style="animation-delay: 0.5s;">
+      <div class="fade-in relative z-10 mt-6 px-6 text-center sm:mt-8" style="animation-delay: 0.5s;">
         <p class="font-label-sm text-label-sm uppercase tracking-[0.35em] text-on-primary-container opacity-80">
           Powered by AI
+        </p>
+        <p class="mt-3 text-sm font-medium uppercase tracking-[0.22em] text-white/85">
+          Ketuk di mana saja untuk memulai
         </p>
       </div>
 
       <div class="pointer-events-none fixed inset-0 overflow-hidden">
-        <div class="absolute left-[-10%] top-[-10%] h-[40%] w-[40%] rounded-full bg-white/5 blur-[120px]"></div>
-        <div class="absolute bottom-[-5%] right-[-5%] h-[30%] w-[30%] rounded-full bg-white/5 blur-[100px]"></div>
+        <div class="absolute inset-0 bg-[#0b7a28]"></div>
       </div>
     </section>
   `;
 }
 
 export function attachSplashInteractions() {
+  const splashScreen = document.getElementById('splash-screen');
   const logo = document.getElementById('splash-logo');
 
-  if (!logo) {
+  if (!splashScreen) {
     return;
   }
 
@@ -47,13 +50,14 @@ export function attachSplashInteractions() {
     window.location.hash = '#/login';
   };
 
-  logo.addEventListener('click', goToLogin);
-  logo.addEventListener('keydown', (event) => {
-    if (event.key === 'Enter' || event.key === ' ') {
-      event.preventDefault();
-      goToLogin();
-    }
-  });
-  logo.setAttribute('tabindex', '0');
-  logo.setAttribute('role', 'button');
+  splashScreen.addEventListener('click', goToLogin);
+
+  if (logo) {
+    logo.addEventListener('keydown', (event) => {
+      if (event.key === 'Enter' || event.key === ' ') {
+        event.preventDefault();
+        goToLogin();
+      }
+    });
+  }
 }
