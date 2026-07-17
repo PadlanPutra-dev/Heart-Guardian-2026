@@ -3,6 +3,7 @@ import { createDashboardPage } from '../pages/dashboard.js';
 import { createDoctorAlertsPage } from '../pages/doctor/alerts.js';
 import { createDoctorCalendarPage } from '../pages/doctor/calendar.js';
 import { createDoctorPatientsPage } from '../pages/doctor/patients.js';
+import { createDoctorPatientDetailsPage } from '../pages/doctor/patient-details.js';
 import { createDoctorProfilePage } from '../pages/doctor/profile.js';
 import { createHomePage } from '../pages/home.js';
 import { createInfoPage } from '../pages/info.js';
@@ -47,6 +48,7 @@ function syncDoctorBottomNav(hash = window.location.hash || '#/dashboard') {
   const activeHref = {
     '#/dashboard': '#/dashboard',
     '#/doctor-patients': '#/doctor-patients',
+    '#/doctor-patient-details': '#/doctor-patients',
     '#/doctor-calendar': '#/doctor-calendar',
     '#/doctor-alerts': '#/doctor-alerts',
     '#/doctor-profile': '#/doctor-profile'
@@ -259,6 +261,23 @@ async function renderPage() {
         renderLayout(createDoctorPatientsPage(profile.data));
       } catch (error) {
         console.error('Doctor patients page load failed:', error);
+        clearAuthState();
+        window.location.hash = '#/login';
+      }
+    } else {
+      window.location.hash = '#/login';
+    }
+    return;
+  }
+
+  if (hash === '#/doctor-patient-details') {
+    if (token) {
+      try {
+        const profile = await fetchProfile(token);
+        setAuthState({ token, user: profile.data.user });
+        renderLayout(createDoctorPatientDetailsPage(profile.data));
+      } catch (error) {
+        console.error('Doctor patient details page load failed:', error);
         clearAuthState();
         window.location.hash = '#/login';
       }
@@ -535,6 +554,26 @@ function attachAuthHandlers(mode) {
 
 function wireGlobalEvents() {
   document.addEventListener('click', (event) => {
+    const viewDetailsButton = event.target.closest('[data-view-details]');
+    if (viewDetailsButton) {
+      event.preventDefault();
+      const patient = {
+        name: viewDetailsButton.getAttribute('data-patient-name') || '',
+        age: viewDetailsButton.getAttribute('data-patient-age') || '',
+        id: viewDetailsButton.getAttribute('data-patient-id') || '',
+        bpm: viewDetailsButton.getAttribute('data-patient-bpm') || '',
+        statusLabel: viewDetailsButton.getAttribute('data-patient-status-label') || '',
+        riskLabel: viewDetailsButton.getAttribute('data-patient-risk-label') || '',
+        doctorName: viewDetailsButton.getAttribute('data-patient-doctor-name') || '',
+        lastUpdated: viewDetailsButton.getAttribute('data-patient-last-updated') || '',
+        avatar: viewDetailsButton.getAttribute('data-patient-avatar') || '',
+        accent: viewDetailsButton.getAttribute('data-patient-accent') || 'warning'
+      };
+      sessionStorage.setItem('heart-guardian-selected-patient', JSON.stringify(patient));
+      window.location.hash = '#/doctor-patient-details';
+      return;
+    }
+
     const logoutButton = event.target.closest('[data-logout]');
     if (!logoutButton) {
       return;

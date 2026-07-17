@@ -110,7 +110,7 @@ export function createDoctorPatientsPage(authState) {
               </div>
               <div class="flex items-center justify-between">
                 <span class="font-label-sm text-label-sm text-outline">Last updated: 4 mins ago</span>
-                <button class="rounded-full bg-primary px-4 py-2 font-label-lg text-label-lg text-on-primary active:opacity-90">View Details</button>
+                <button class="rounded-full bg-primary px-4 py-2 font-label-lg text-label-lg text-on-primary active:opacity-90" type="button" data-view-details data-patient-name="Alex Mercer" data-patient-age="72" data-patient-id="HG-88291" data-patient-bpm="112" data-patient-status-label="Critical" data-patient-risk-label="Significant increase in heart rate over last 2 hours." data-patient-doctor-name="Dr. Michael Johnson" data-patient-last-updated="Updated 4 mins ago" data-patient-avatar="https://lh3.googleusercontent.com/aida-public/AB6AXuCAuIBTojIrVnzYw11rLSewtfZGMM-iGPxW62jEXkf2wWLCuZk5yPd0EiEdH0mwcsAfs-PVHPtrx5HfoE8paEHcp_GhEvMYus39chz5EZSESRBqzUje17QFfIBJlgVZd0pBdW7bFhwcNAtiobNYpxc8ahRWOvMw2AqTnIiEYFy4F1lUc6Sz36NQwiFskqWQFy4PnhuFMUKupihxPck87vopSBp2p5rNZApLUbUNjzykiFpyQfYTSE4TQg" data-patient-accent="error">View Details</button>
               </div>
             </div>
           </div>
@@ -147,7 +147,7 @@ export function createDoctorPatientsPage(authState) {
               </div>
               <div class="flex items-center justify-between">
                 <span class="font-label-sm text-label-sm text-outline">Last updated: 18 mins ago</span>
-                <button class="rounded-full bg-primary px-4 py-2 font-label-lg text-label-lg text-on-primary active:opacity-90">View Details</button>
+                <button class="rounded-full bg-primary px-4 py-2 font-label-lg text-label-lg text-on-primary active:opacity-90" type="button" data-view-details data-patient-name="Emma Thompson" data-patient-age="58" data-patient-id="HG-91204" data-patient-bpm="94" data-patient-status-label="Warning" data-patient-risk-label="Elevated resting heart rate compared to 7-day average." data-patient-doctor-name="Dr. Michael Johnson" data-patient-last-updated="Updated 18 mins ago" data-patient-avatar="https://lh3.googleusercontent.com/aida-public/AB6AXuAZP6RgHVjoae6KdP7XwTYHLVjmQSI-FQuvPu4XJQZ_PIshl0qI3JUxhVmVLsg2uZoX8MUXSVvzGEMByVsNCClb5yDhUIkj5I57ssf8NWq1Xt5gh5h8SpcO4EtmHSJairBsB6Fr4jSU62wBlgbjMvTF-EltWWMEkNaa0aT_qG42jj75RqzIwGPiL5etbKxD6sbpMQ8MbBXRwJY65Y7o5kGS2jO0ZNcvmxFr1W8xxQxhABbew-1kO5K_KQ" data-patient-accent="warning">View Details</button>
               </div>
             </div>
           </div>
@@ -184,7 +184,7 @@ export function createDoctorPatientsPage(authState) {
               </div>
               <div class="flex items-center justify-between">
                 <span class="font-label-sm text-label-sm text-outline">Last updated: 1 hour ago</span>
-                <button class="rounded-full bg-primary px-4 py-2 font-label-lg text-label-lg text-on-primary active:opacity-90">View Details</button>
+                <button class="rounded-full bg-primary px-4 py-2 font-label-lg text-label-lg text-on-primary active:opacity-90" type="button" data-view-details data-patient-name="Marcus Chen" data-patient-age="32" data-patient-id="HG-77312" data-patient-bpm="72" data-patient-status-label="Stable" data-patient-risk-label="All vitals within healthy range for the last 24-hour monitoring period." data-patient-doctor-name="Dr. Michael Johnson" data-patient-last-updated="Updated 1 hour ago" data-patient-avatar="https://lh3.googleusercontent.com/aida-public/AB6AXuBzLDM3PC42ZcFmA_HoK6dcLFbd5ORNvbRKq52PtsGJi5y71Nen0HZ2iMw8WoHBaBDPA8UQIIyVG1K8mk-UxjZuPiLTmDnjRViB2P6VvP7j5AAdCq6fmHJc7Rs3VXQdhI1E3j5KmDBv2O42Q0leaePUaAfTqLmi9uVdNrmqzUg5c6qpdXxC9MNjyGjvzXcXpX02LLMT2syZY6UbGCcjsc9PICMsPinwzqSS2Au-Jsj4b3AGnok2HEbT9Q" data-patient-accent="primary">View Details</button>
               </div>
             </div>
           </div>
